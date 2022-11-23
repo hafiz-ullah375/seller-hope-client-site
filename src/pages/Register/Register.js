@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 const Register = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUserInfo } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('')
     const handleSignUp = data => {
         console.log(data);
@@ -20,7 +20,7 @@ const Register = () => {
                     displayName: data.name
                 }
 
-                updateUser(userInfo)
+                updateUserInfo(userInfo)
                     .then(() => { })
                     .catch(error => {
                         console.log(error.message)

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm()
@@ -18,6 +19,7 @@ const Login = () => {
         login(data.email, data.password)
             .then(result => {
                 const user = result.user;
+                toast('user created successfully')
                 console.log(user);
                 navigate(from, { replace: true });
             })

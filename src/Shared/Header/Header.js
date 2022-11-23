@@ -35,7 +35,7 @@ const Header = () => {
                             <li ><Link to="blogs">Blogs</Link></li>
                         </ul>
                     </div>
-                    <Link to='/' className="btn btn-ghost normal-case text-2xl">Dream Photography
+                    <Link to='/' className="btn btn-ghost normal-case text-4xl">Seller’s Hope
 
                     </Link>
                 </div>
