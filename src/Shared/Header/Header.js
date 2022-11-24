@@ -19,6 +19,8 @@ const Header = () => {
             .catch(error => console.error(error))
     }
 
+
+
     return (
         <div className='bg-cyan-600'>
             <div className="navbar  lg:w-11/12  mx-auto py-5">
