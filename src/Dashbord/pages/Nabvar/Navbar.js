@@ -1,12 +1,13 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+
 import { HiOutlineLogout } from "react-icons/hi";
 import { FaGoogle, FaUser, } from "react-icons/fa";
 import ReactTooltip from 'react-tooltip';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
-const Header = () => {
+const Navbar = () => {
     const { user, googleProvider, logout } = useContext(AuthContext)
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
@@ -33,7 +34,7 @@ const Header = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 Navigate('/')
             })
     }
@@ -47,10 +48,7 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li><Link to='/'>Home</Link></li>
-                            <li className='mx-2'><Link to="/allServices">Service</Link></li>
-                            <li><Link to="/addServices">Add Services</Link></li>
-                            <li ><Link to="myReview">My Review</Link></li>
-                            <li ><Link to="blogs">Blogs</Link></li>
+
                         </ul>
                     </div>
                     <Link to='/' className="btn btn-ghost normal-case text-4xl">Seller’s Hope
@@ -61,9 +59,13 @@ const Header = () => {
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
 
+                        <li ><Link to="addProduct">Add Products</Link></li>
+                        <li ><Link to="allSellers">AllSellers</Link></li>
+                        <li ><Link to="allBuyers"> AllBuyers</Link></li>
+                        <li ><Link to="myOrders">myOrders</Link></li>
+                        <li ><Link to="myProducts">My Products</Link></li>
 
-                        <li ><Link to="dashboard">dashboard</Link></li>
-                        <li ><Link to="blogs">Blogs</Link></li>
+
 
                     </ul>
                 </div>
@@ -92,4 +94,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Navbar;

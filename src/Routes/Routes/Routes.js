@@ -64,11 +64,11 @@ const router = createBrowserRouter([
                 element: <MyProducts></MyProducts>
             },
             {
-                path: '/dashboard/AllSellers',
+                path: '/dashboard/allSellers',
                 element: <AllSellers></AllSellers>
             },
             {
-                path: '/dashboard/AllBuyers',
+                path: '/dashboard/allBuyers',
                 element: <AllBuyers></AllBuyers>
             }
         ]

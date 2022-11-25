@@ -1,11 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../../Shared/Header/Header';
+
+import Navbar from '../pages/Nabvar/Navbar';
 
 const DashboardLayOut = () => {
     return (
         <div>
-            <Header></Header>
+            <Navbar></Navbar>
             <Outlet></Outlet>
         </div>
     );
