@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { HiOutlineLogout } from "react-icons/hi";
 import { FaGoogle, FaUser, } from "react-icons/fa";
@@ -13,6 +13,7 @@ const Header = () => {
         googleProvider(provider)
             .then(result => {
                 const user = result.user;
+                saveUserInfo(user.displayName, user.email)
                 console.log(user);
 
             })
@@ -20,7 +21,22 @@ const Header = () => {
     }
 
 
-
+    const saveUserInfo = (name, email) => {
+        const role = 'buyer'
+        const userInfo = { name, email, role }
+        fetch('http://localhost:4000/storeUsers', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(userInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Navigate('/')
+            })
+    }
     return (
         <div className='bg-cyan-600'>
             <div className="navbar  lg:w-11/12  mx-auto py-5">
