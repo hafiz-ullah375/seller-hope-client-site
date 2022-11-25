@@ -14,14 +14,16 @@ const Register = () => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 toast('user created successfully')
                 const userInfo = {
                     displayName: data.name
                 }
 
                 updateUserInfo(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUserInfo(data?.name, data?.email, data.role)
+                    })
                     .catch(error => {
                         console.log(error.message)
 
@@ -32,6 +34,11 @@ const Register = () => {
                 setSignUpError(error.message)
 
             })
+
+    }
+    const saveUserInfo = (name, email, role) => {
+        const userInfo = { name, email, role }
+        console.log(userInfo);
     }
     return (
         <div className='h-[700px] flex justify-center items-center'>
@@ -80,6 +87,10 @@ const Register = () => {
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
                     </div>
+                    <select className='btn' {...register("role")}>
+                        <option value="buyer">buyer</option>
+                        <option value="seller">seller</option>
+                    </select>
 
                     <input className='btn btn-accent w-full mt-4' value='Sign Up' type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
