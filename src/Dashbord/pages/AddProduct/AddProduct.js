@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
+
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 
 
@@ -7,10 +10,30 @@ import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
     const { register, handleSubmit, } = useForm();
-    const handleSignUp = data => {
-
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const submitProduct = data => {
         console.log(data);
+        const { displayName, email } = user;
+        const { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, sellerGmail, sellerName, useTime } = data;
 
+        const currentDate = new Date().toLocaleDateString();
+        const currentTime = new Date().toLocaleTimeString();
+        const date = currentTime + ' ' + currentDate
+
+        const productInfo = { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, sellerGmail, sellerName, useTime, displayName, email, date }
+        fetch('http://localhost:4000/addProduct', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(productInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                navigate('/dashboard/myProducts')
+            })
 
 
 
@@ -19,7 +42,7 @@ const AddProduct = () => {
         <div className=' flex justify-center items-center'>
             <div>
                 <h2 className='text-2xl text-center font-bold'>Add Product</h2>
-                <form onSubmit={handleSubmit(handleSignUp)}>
+                <form onSubmit={handleSubmit(submitProduct)}>
                     <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-6 lg:mx-8  sm:m-0">
                         <div>
 
@@ -120,7 +143,7 @@ const AddProduct = () => {
                                 <input type="text"
                                     {...register('useTime', {
                                         required: 'use time is required',
-                                        minLength: { value: 6, message: 'password must be 6 character long' },
+
 
                                     })}
                                     className="input input-bordered w-full max-w-xs" />
@@ -147,8 +170,8 @@ const AddProduct = () => {
                                     <span className="label-text"> Purchase Time</span>
                                 </label>
                                 <input type="text"
-                                    {...register('purchase', {
-                                        required: 'Purchase Name is required'
+                                    {...register('purchaseTime', {
+                                        required: 'Purchase time is required'
                                     })}
                                     className="input input-bordered w-full max-w-xs" />
 
@@ -181,12 +204,7 @@ const AddProduct = () => {
 
                                     placeholder="Bio"></textarea>
 
-
-
                             </div>
-
-
-
                         </div>
                     </div>
 
