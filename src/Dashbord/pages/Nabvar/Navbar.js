@@ -6,9 +6,11 @@ import { HiOutlineLogout } from "react-icons/hi";
 import { FaGoogle, FaUser, } from "react-icons/fa";
 import ReactTooltip from 'react-tooltip';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const Navbar = () => {
     const { user, googleProvider, logout } = useContext(AuthContext)
+    const [admin] = useAdmin(user.email)
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
         googleProvider(provider)
@@ -38,6 +40,7 @@ const Navbar = () => {
                 Navigate('/')
             })
     }
+
     return (
         <div className='bg-cyan-600'>
             <div className="navbar  lg:w-11/12  mx-auto py-5">
@@ -59,10 +62,14 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
 
-                        <li ><Link to="addProduct">Add Products</Link></li>
-                        <li ><Link to="allSellers">AllSellers</Link></li>
-                        <li ><Link to="allBuyers"> AllBuyers</Link></li>
+                        {admin &&
+                            <>
+                                <li ><Link to="allSellers">AllSellers</Link></li>
+                                <li ><Link to="allBuyers"> AllBuyers</Link></li>
+                            </>
+                        }
                         <li ><Link to="myOrders">myOrders</Link></li>
+                        <li ><Link to="addProduct">Add Products</Link></li>
                         <li ><Link to="myProducts">My Products</Link></li>
 
 

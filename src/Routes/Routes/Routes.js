@@ -13,6 +13,8 @@ import Home from "../../pages/Home/Home/Home";
 import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 
 
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayOut></DashboardLayOut>,
+        element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/addProduct',
@@ -65,11 +67,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allSellers',
-                element: <AllSellers></AllSellers>
+                element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
                 path: '/dashboard/allBuyers',
-                element: <AllBuyers></AllBuyers>
+                element: <AdminRoute> <AllBuyers></AllBuyers></AdminRoute>
             }
         ]
     }
