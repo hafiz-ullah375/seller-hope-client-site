@@ -15,13 +15,13 @@ const AddProduct = () => {
     const submitProduct = data => {
         console.log(data);
         const { displayName, email } = user;
-        const { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, sellerGmail, sellerName, useTime } = data;
+        const { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, useTime } = data;
 
         const currentDate = new Date().toLocaleDateString();
         const currentTime = new Date().toLocaleTimeString();
         const date = currentTime + ' ' + currentDate
 
-        const productInfo = { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, sellerGmail, sellerName, useTime, displayName, email, date }
+        const productInfo = { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, useTime, displayName, email, date }
         fetch('http://localhost:4000/addProduct', {
             method: 'POST',
             headers: {
@@ -108,6 +108,8 @@ const AddProduct = () => {
                                     <span className="label-text">Seller Name</span>
                                 </label>
                                 <input type="text"
+                                    defaultValue={user?.displayName}
+                                    readOnly
                                     {...register('sellerName', {
                                         required: 'Seller Name is required'
                                     })}
@@ -179,9 +181,11 @@ const AddProduct = () => {
                             </div>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="label-text">Seller Gmail</span>
+                                    <span className="label-text">Seller Email</span>
                                 </label>
                                 <input type="text"
+                                    defaultValue={user?.email}
+                                    readOnly
                                     {...register('sellerGmail', {
                                         required: 'Seller Gmail is required'
                                     })}
