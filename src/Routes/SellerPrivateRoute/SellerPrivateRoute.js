@@ -2,17 +2,18 @@ import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
-import useAdmin from '../../hooks/useAdmin';
+
+import useSeller from '../../hooks/useSeller';
 
 const AdminRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
-    const [admin, isAdminLoading] = useAdmin(user?.email)
+    const [seller, sellerLoader] = useSeller(user?.email)
 
     const location = useLocation();
-    if (loading || isAdminLoading) {
+    if (loading || sellerLoader) {
         return <progress className="progress w-56"></progress>;
     }
-    if (user && admin) {
+    if (user && seller) {
         return children;
     }
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>

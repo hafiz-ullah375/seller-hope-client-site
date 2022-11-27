@@ -7,10 +7,13 @@ import { FaGoogle, FaUser, } from "react-icons/fa";
 import ReactTooltip from 'react-tooltip';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
+import useSeller from '../../../hooks/useSeller';
+
 
 const Navbar = () => {
     const { user, googleProvider, logout } = useContext(AuthContext)
-    const [admin] = useAdmin(user.email)
+    const [admin] = useAdmin(user?.email);
+    const [seller] = useSeller(user?.email)
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
         googleProvider(provider)
@@ -62,15 +65,24 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal p-0">
                         <li><Link to='/'>Home</Link></li>
 
-                        {admin &&
+
+                        {
+                            admin &&
                             <>
                                 <li ><Link to="allSellers">AllSellers</Link></li>
                                 <li ><Link to="allBuyers"> AllBuyers</Link></li>
                             </>
                         }
+
                         <li ><Link to="myOrders">myOrders</Link></li>
-                        <li ><Link to="addProduct">Add Products</Link></li>
-                        <li ><Link to="myProducts">My Products</Link></li>
+
+                        {
+                            seller &&
+                            <>
+                                <li ><Link to="addProduct">Add Products</Link></li>
+                                <li ><Link to="myProducts">My Products</Link></li>
+                            </>
+                        }
 
 
 

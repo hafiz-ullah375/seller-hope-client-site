@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Seller = ({ seller, handleDelete }) => {
-    const { name, email, _id } = seller;
-    console.log(seller);
+const Buyer = ({ buyer, handleDelete }) => {
+    const { name, email, _id } = buyer;
+    console.log(buyer);
 
     return (
         <tr>
@@ -15,4 +15,4 @@ const Seller = ({ seller, handleDelete }) => {
 
 };
 
-export default Seller;
+export default Buyer;
