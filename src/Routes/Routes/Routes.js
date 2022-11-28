@@ -15,6 +15,7 @@ import Register from "../../pages/Register/Register";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerPrivateRoute from "../BuyerPrivateRoute/BuyerPrivateRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 import SellerPrivateRoute from "../SellerPrivateRoute/SellerPrivateRoute";
 
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayOut></DashboardLayOut>,
+        element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
         children: [
             {
                 path: '/dashboard/addProduct',

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const MyProduct = ({ product }) => {
-    console.log(product);
+
 
 
     const { brand, productPicture, productName, description, OriginalPrice, resalePrice, condition, displayName, location, date, useTime, purchaseTime } = product;

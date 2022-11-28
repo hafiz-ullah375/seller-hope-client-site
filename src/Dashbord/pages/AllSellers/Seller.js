@@ -2,7 +2,7 @@ import React from 'react';
 
 const Seller = ({ seller, handleDelete }) => {
     const { name, email, _id } = seller;
-    console.log(seller);
+
 
     return (
         <tr className='text-center' >

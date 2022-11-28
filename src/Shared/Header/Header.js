@@ -14,7 +14,7 @@ const Header = () => {
             .then(result => {
                 const user = result.user;
                 saveUserInfo(user.displayName, user.email)
-                console.log(user);
+
 
             })
             .catch(error => console.error(error))
@@ -33,7 +33,7 @@ const Header = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 Navigate('/')
             })
     }

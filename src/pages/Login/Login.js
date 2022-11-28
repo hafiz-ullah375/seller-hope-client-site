@@ -14,17 +14,17 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
 
     const handleLogin = data => {
-        console.log(data);
+
         setLoginError('')
         login(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 toast('Login Successful')
-                console.log(user);
+
                 navigate(from, { replace: true });
             })
             .catch(error => {
-                console.log(error.message);
+
                 setLoginError(error.message)
             })
     }

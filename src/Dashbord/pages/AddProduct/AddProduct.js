@@ -13,7 +13,7 @@ const AddProduct = () => {
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const submitProduct = data => {
-        console.log(data);
+
         const { displayName, email } = user;
         const { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, useTime } = data;
 
@@ -31,7 +31,7 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 navigate('/dashboard/myProducts')
             })
 

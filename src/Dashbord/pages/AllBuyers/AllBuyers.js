@@ -7,7 +7,7 @@ const AllBuyers = () => {
 
     const [buyers, setBuyers] = useState([])
     const [loader, setLoader] = useState(true)
-    console.log(buyers);
+
 
     useEffect(
         () => {
@@ -15,11 +15,11 @@ const AllBuyers = () => {
             fetch('https://sellers-hope-server.vercel.app/allUser')
                 .then((res) => res.json())
                 .then(data => {
-                    const filters = data.filter(buyer => buyer?.role === "buyer")
+                    const buyers = data.filter(buyer => buyer?.role === "buyer")
                     setLoader(false)
-                    setBuyers(filters)
+                    setBuyers(buyers)
 
-                    console.log(filters);
+
                 })
         }
         , [])

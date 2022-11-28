@@ -9,13 +9,13 @@ const Register = () => {
     const [signUpError, setSignUpError] = useState('')
     const navigate = useNavigate()
     const handleSignUp = data => {
-        console.log(data);
+
 
         setSignUpError('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                // console.log(user);
+
                 toast('user created successfully')
                 const userInfo = {
                     displayName: data.name
@@ -26,12 +26,12 @@ const Register = () => {
                         saveUserInfo(data?.name, data?.email, data.role)
                     })
                     .catch(error => {
-                        console.log(error.message)
+
 
                     })
             })
             .catch(error => {
-                console.log(error.message)
+
                 setSignUpError(error.message)
 
             })
@@ -48,7 +48,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 navigate('/')
             })
     }

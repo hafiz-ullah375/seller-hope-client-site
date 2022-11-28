@@ -12,7 +12,7 @@ const useBuyer = email => {
 
                         setBuyer(data?.buyer)
                         setBuyerLoaders(false)
-                        console.log(data);
+
 
                     })
             }
