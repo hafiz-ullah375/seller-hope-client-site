@@ -5,7 +5,7 @@ const Seller = ({ seller, handleDelete }) => {
     console.log(seller);
 
     return (
-        <tr>
+        <tr className='text-center' >
 
             <td>{name}</td>
             <td>{email}</td>

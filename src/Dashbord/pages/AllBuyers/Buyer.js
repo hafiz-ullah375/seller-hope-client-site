@@ -5,11 +5,11 @@ const Buyer = ({ buyer, handleDelete }) => {
     console.log(buyer);
 
     return (
-        <tr>
+        <tr className='text-center'>
 
             <td>{name}</td>
             <td>{email}</td>
-            <td onClick={() => handleDelete(_id)}><button>Delete</button></td>
+            <td onClick={() => handleDelete(_id)}><button className=''>Delete</button></td>
         </tr>
     );
 

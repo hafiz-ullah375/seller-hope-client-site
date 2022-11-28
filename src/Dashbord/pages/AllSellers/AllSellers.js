@@ -39,11 +39,11 @@ const AllSellers = () => {
     }
     return (
         <div>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto sm:w-screen lg:w-4/5 mx-auto">
                 <table className="table w-full">
 
                     <thead>
-                        <tr>
+                        <tr className='text-center'>
 
                             <th>Name</th>
                             <th>Email</th>
@@ -51,7 +51,7 @@ const AllSellers = () => {
 
                         </tr>
                     </thead>
-                    <tbody className='grid lg:grid-cols-2 md:grid-cols-2 gap-6 lg:mx-8 my-8'>
+                    <tbody className=' lg:mx-8 my-8'>
                         {
                             sellers.map(seller => <Seller
                                 key={seller._id}
