@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: '/allProducts/:brand',
                 element: <AllProducts></AllProducts>,
-                loader: ({ params }) => fetch(`http://localhost:4000/itemByCategory/${params.brand}`)
+                loader: ({ params }) => fetch(`https://sellers-hope-server.vercel.app/itemByCategory/${params.brand}`)
             },
             {
                 path: '/login',

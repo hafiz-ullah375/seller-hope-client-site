@@ -6,7 +6,7 @@ const Categories = () => {
     const { loading } = useContext(AuthContext)
     const { data: categories = [], } = useQuery({
         queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:4000/categories')
+        queryFn: () => fetch('https://sellers-hope-server.vercel.app/categories')
             .then(res => res.json())
     })
     // if (loading) {

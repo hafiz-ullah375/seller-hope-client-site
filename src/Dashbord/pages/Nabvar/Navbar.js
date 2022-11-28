@@ -35,7 +35,7 @@ const Navbar = () => {
     const saveUserInfo = (name, email) => {
         const role = 'buyer'
         const userInfo = { name, email, role }
-        fetch('http://localhost:4000/storeUsers', {
+        fetch('https://sellers-hope-server.vercel.app/storeUsers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

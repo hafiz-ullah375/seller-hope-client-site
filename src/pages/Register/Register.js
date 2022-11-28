@@ -39,7 +39,7 @@ const Register = () => {
     }
     const saveUserInfo = (name, email, role) => {
         const userInfo = { name, email, role }
-        fetch('http://localhost:4000/storeUsers', {
+        fetch('https://sellers-hope-server.vercel.app/storeUsers', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

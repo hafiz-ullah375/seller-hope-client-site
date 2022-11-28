@@ -11,7 +11,7 @@ const AllSellers = () => {
     useEffect(
         () => {
 
-            fetch('http://localhost:4000/allUser')
+            fetch('https://sellers-hope-server.vercel.app/allUser')
                 .then((res) => res.json())
                 .then(data => {
                     const filters = data.filter(buyer => buyer?.role === "seller")
@@ -24,7 +24,7 @@ const AllSellers = () => {
         , [])
     const handleDelete = id => {
 
-        fetch(`http://localhost:4000/user/delete/${id}`, {
+        fetch(`https://sellers-hope-server.vercel.app/user/delete/${id}`, {
             method: "DELETE"
         })
             .then(res => res.json())

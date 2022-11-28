@@ -22,7 +22,7 @@ const AddProduct = () => {
         const date = currentTime + ' ' + currentDate
 
         const productInfo = { brand, condition, OriginalPrice, description, location, mobileNumber, productName, productPicture, purchaseTime, resalePrice, useTime, displayName, email, date }
-        fetch('http://localhost:4000/addProduct', {
+        fetch('https://sellers-hope-server.vercel.app/addProduct', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

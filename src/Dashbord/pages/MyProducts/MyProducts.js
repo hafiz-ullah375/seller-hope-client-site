@@ -9,7 +9,7 @@ const MyProducts = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:4000/products?email=${user?.email}`)
+        fetch(`https://sellers-hope-server.vercel.app/products?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setProducts(data))
 

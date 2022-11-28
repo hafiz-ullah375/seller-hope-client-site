@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
-    console.log(product);
+
     const { brand, picture } = product;
     return (
         <div className="card card-compact my-4 shadow-xl">
