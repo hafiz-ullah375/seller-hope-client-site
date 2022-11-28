@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 
 import { HiOutlineLogout } from "react-icons/hi";
 import { FaGoogle, FaUser, } from "react-icons/fa";
@@ -8,19 +8,24 @@ import ReactTooltip from 'react-tooltip';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
 import useSeller from '../../../hooks/useSeller';
-
+import useBuyer from '../../../hooks/useBuyer';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
     const { user, googleProvider, logout } = useContext(AuthContext)
     const [admin] = useAdmin(user?.email);
     const [seller] = useSeller(user?.email)
+    const [buyer] = useBuyer(user?.email);
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/';
     const provider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
         googleProvider(provider)
             .then(result => {
                 const user = result.user;
                 saveUserInfo(user.displayName, user.email)
-                console.log(user);
+
 
             })
             .catch(error => console.error(error))
@@ -39,8 +44,8 @@ const Navbar = () => {
         })
             .then(res => res.json())
             .then(data => {
-
-                Navigate('/')
+                toast('Login Successful')
+                navigate(from, { replace: true });
             })
     }
 
@@ -74,7 +79,10 @@ const Navbar = () => {
                             </>
                         }
 
-                        <li ><Link to="myOrders">myOrders</Link></li>
+                        {
+                            buyer &&
+
+                            <li ><Link to="myOrders">myOrders</Link></li>}
 
                         {
                             seller &&

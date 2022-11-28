@@ -1,23 +1,21 @@
 import React, { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useBuyer from '../../hooks/useBuyer';
 
-
-import useSeller from '../../hooks/useSeller';
-
-const SellerPrivateRoute = ({ children }) => {
+const BuyerPrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
-    const [seller, sellerLoader] = useSeller(user?.email)
+    const [buyer, buyerLoader] = useBuyer(user?.email)
 
     const location = useLocation();
-    if (loading || sellerLoader) {
+    if (loading || buyerLoader) {
         return <progress className="progress w-56"></progress>;
     }
-    if (user && seller) {
+    if (buyer) {
         return children;
     }
 
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>
 };
 
-export default SellerPrivateRoute;
+export default BuyerPrivateRoute;

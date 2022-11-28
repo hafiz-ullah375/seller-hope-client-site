@@ -19,7 +19,7 @@ const Login = () => {
         login(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                toast('user created successfully')
+                toast('Login Successful')
                 console.log(user);
                 navigate(from, { replace: true });
             })

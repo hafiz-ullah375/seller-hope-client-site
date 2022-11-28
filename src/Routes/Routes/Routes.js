@@ -14,7 +14,9 @@ import Login from "../../pages/Login/Login";
 import Register from "../../pages/Register/Register";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import BuyerPrivateRoute from "../BuyerPrivateRoute/BuyerPrivateRoute";
+
+import SellerPrivateRoute from "../SellerPrivateRoute/SellerPrivateRoute";
 
 
 
@@ -55,15 +57,15 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/addProduct',
-                element: <AddProduct></AddProduct>
+                element: <SellerPrivateRoute><AddProduct></AddProduct></SellerPrivateRoute>
             },
             {
                 path: '/dashboard/myOrders',
-                element: <MyOrders></MyOrders>
+                element: <BuyerPrivateRoute><MyOrders></MyOrders></BuyerPrivateRoute>
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerPrivateRoute><MyProducts></MyProducts></SellerPrivateRoute>
             },
             {
                 path: '/dashboard/allSellers',
