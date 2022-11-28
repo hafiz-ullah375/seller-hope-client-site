@@ -4,8 +4,8 @@
 ---
 > ## [https://sellers-hope.firebaseapp.com/](https://sellers-hope.firebaseapp.com/)
 ---
-> ## email:hafiz20@gmail.com
-> ## password:Asdf123@
+> ## email: hafiz20@gmail.com
+> ## password: Asdf123@
 ---
 #   About This Project 
 ### this project build for learn mern stack and and   i am create some categories for resell product 
